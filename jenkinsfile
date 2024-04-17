@@ -1,0 +1,32 @@
+pipeline
+{
+    agent any
+    tools{
+        maven 'maven3.9.6'
+    }
+    stages
+    {
+        stage('ContDownload')
+        {
+            steps
+            {
+                git branch: 'main', url: 'https://github.com/SreelekhaB77/sample-java-maven--public.git'
+            }
+        }
+        stage('ContBuild')
+        {
+            steps
+            {
+                 sh 'mvn clean install'
+            }
+        }
+        stage('ContDeploy')
+        {
+            steps
+            {
+                 sh 'cd target'
+                 sh 'java -jar **/*.jar'
+            }
+        }
+    }
+}
