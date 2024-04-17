@@ -6,21 +6,21 @@ pipeline
     }
     stages
     {
-        stage('ContDownload')
+        stage('Continuous-Download')
         {
             steps
             {
                 git branch: 'main', url: 'https://github.com/SreelekhaB77/sample-java-maven--public.git'
             }
         }
-        stage('ContBuild')
+        stage('Continuous-Build')
         {
             steps
             {
                  sh 'mvn clean install'
             }
         }
-        stage('ContDeploy')
+        stage('Continuous-Deploy')
         {
             steps
             {
